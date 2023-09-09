@@ -52,6 +52,7 @@ Route::post('/contenido', [ContenidoController::class, 'store']);
 // Route::get('/contenido', [ContenidoController::class, 'index']);
 // Route::post('/register-notification', [ExpoTokenController::class, 'registrarExpoToken']); //Registrar el expoToken al usuario
 Route::get('/eliminar-token', [ExpoTokenController::class, 'eliminarExpoToken']);
+Route::get('/verifica_token/{id}', [HijoController::class, 'verificaToken']);
 //Eliminar el expotoken al usuario
 Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
@@ -127,4 +128,6 @@ Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::post('/send_token', [ExpoTokenController::class, 'send_token']);
     Route::post('/store_boy', [HijoController::class, 'store_boy']);
     Route::post('/get_boy_not_register', [HijoController::class, 'get_boy_not_register']);
+    // verifica si el token está activo
+  
 });

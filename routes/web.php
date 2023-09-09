@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(//,'planVerification'])->group(
 
 
         Route::post('/crear_hijo', [App\Http\Controllers\UserController::class,'crear_hijo'])->name('crear_hijo');
+        Route::post('/editar_hijo/{id}', [App\Http\Controllers\UserController::class,'editar_hijo'])->name('editar_hijo');
+        Route::delete('/eliminar_hijo/{id}', [App\Http\Controllers\UserController::class,'eliminar_hijo'])->name('eliminar_hijo');
         Route::get('/hijoContactos/{id}', [App\Http\Controllers\UserController::class,'hijoContactos'])->name('hijoContactos');
         Route::get('/hijoLlamadas/{id}', [App\Http\Controllers\UserController::class,'hijoLlamadas'])->name('hijoLlamadas');
         Route::get('/hijoGaleria/{id}', [App\Http\Controllers\UserController::class,'hijoGaleria'])->name('hijoGaleria');

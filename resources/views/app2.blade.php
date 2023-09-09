@@ -7,7 +7,7 @@
     <base href="">
     <title>PROTECTING YOU</title>
 
-   
+   <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
     <link rel="shortcut icon" href="../../img/logowhite.png" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />

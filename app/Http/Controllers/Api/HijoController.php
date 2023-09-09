@@ -34,6 +34,30 @@ class HijoController extends Controller
             'data' => $h
         ]);
     }
+    public function verificaToken($id)
+    {
+        $hijo = Hijo::find($id);
+        if (isset($hijo)) {
+            $token = Token::where('estado', 1)->first();
+            if (isset($token)) {
+                return response()->json([
+                    'message' => 'success',
+                    'data' => true
+                ]);
+            }else{
+                return response()->json([
+                    'message' => 'failed token no encontrado',
+                    'data' => false
+                ]);
+            }
+        }else{
+            return response()->json([
+                'message' => 'failed usuario no existe',
+                'data' => false
+            ]);
+        }
+      
+    }
     public function showHijo($id)
     {
         $user = User::findOrFail(Auth::user()->id);
@@ -366,8 +390,7 @@ class HijoController extends Controller
 
                         event(new NotificationContenidoEvent($user, $guardarFoto));
                         event(new ActivateNotification());
-
-                   }
+                    }
                 } catch (\Exception $e) {
                     dd($e);
                 }
@@ -456,7 +479,6 @@ class HijoController extends Controller
 
                         event(new NotificationContenidoEvent($user, $guardarFoto));
                         event(new ActivateNotification());
-
                     }
                 } catch (\Exception $e) {
                     dd($e);
@@ -544,7 +566,6 @@ class HijoController extends Controller
                         $guardarFoto->save();
                         event(new NotificationContenidoEvent($user, $guardarFoto));
                         event(new ActivateNotification());
-
                     }
                 } catch (\Exception $e) {
                     dd($e);
